@@ -11,7 +11,7 @@ const resolvers = {
     Mutation: {
        //create a new exercise resolver
         createExercise: async (_, {title, description, muscles}) => {
-            const exercise = new Exercises({title, description, muscles});
+            const exercise = new exercises({title, description, muscles});
             await exercise.save();
             return exercise;
             },
