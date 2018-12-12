@@ -1,10 +1,13 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
     entry: [ "./client/src/index.js"],
     devtool: 'cheap-module-source-map',
     output: {
-        filename: '[name].[contenthash].js'
+        filename: 'index.js',
+        path:path.resolve(__dirname, "dist")
     },
     module: {
         rules: [
@@ -18,6 +21,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './client/public/index.html'
+        }),
+        new WorkboxWebpackPlugin.InjectManifest({
+            swSrc:'./client/src/custom-sw.js',
+            swDest: 'sw.js'
         })
     ]
 }

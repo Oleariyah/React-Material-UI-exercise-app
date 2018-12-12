@@ -115,10 +115,10 @@ export default compose( graphql(CreateMutation, {name: 'createExercise'}),
             <br />
             {exercise ?
                 <Button variant="raised" onClick={this.handleSubmitEdited} disabled={!title || !muscles} color="primary">
-                 "Edit" 
+                 Edit
                 </Button> : 
                 <Button variant="raised" onClick={this.handleSubmit} disabled={!title || !muscles} color="primary">
-                "Create"
+                Create
                 </Button>}
             
         </form>);
