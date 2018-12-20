@@ -2,9 +2,9 @@
   "name": "exercise",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --port 8080 --compress --mode development",
+    "start": "node ./server/index.js && serve dist",
     "dev": "rm -rf dist && webpack --mode development --progress",
     "build": "rm -rf dist && webpack --mode production --progress",
     "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json dist",

@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     output: {
         filename: 'index.js',
-        path:path.resolve(__dirname, "dist")
+        path:path.resolve(__dirname, "dist/public")
     },
     module: {
         rules: [

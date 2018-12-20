@@ -4,8 +4,11 @@ const resolvers = require ('./resolver/resolvers');
 const typeDefs = require('./schema/types');
 
 //connect to MongoDB with mongodb database with moongoose
-const URI = 'mongodb://localhost/exercise'; // nothing on 27016
+const URI = 'mongodb://oleariyah:police8791@ds213472.mlab.com:13472/exercise'; // nothing on 27016
 const OPTS = { useNewUrlParser: true };
+
+//local db
+//mongodb://localhost/exercise
 
 mongoose.connect(URI, OPTS, function(err) {
     if (err) { return console.error(err);}
