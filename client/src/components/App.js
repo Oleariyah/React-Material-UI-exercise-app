@@ -5,13 +5,16 @@ import { Header, Footer } from "./layouts";
 import Exercises from "./exercises";
 import ExercisesQuery from './graphql/query';
 import { muscles } from "../store";
+import dots from "../assets/three-dots.svg";
+import server from "../assets/no-internet.gif";
+
 
 class App extends Component {
    constructor(props) {
     super(props);
   
     const exercises = props.data.exercises;
-
+    
     this.state = {
       exercises,
       exercise: {}
@@ -113,15 +116,25 @@ class App extends Component {
 export default class AppContainer extends Component{
   render() {
     return (
-      <Query query={ExercisesQuery}>
+      <Query query={ExercisesQuery} fetchPolicy="cache-and-network">
         {({ loading, error, data }) => {
           if (loading) {
-            return <p>Loading ...</p>;
+            return <div style={{
+              textAlign: "center",
+              paddingTop: 250
+            }}>
+                  <img src={dots} />
+               </div>;
           }
           if (error) {
-            return `Error ${error}`;
+            return <div style={{
+              textAlign: "center",
+              paddingTop: 70
+            }}>
+              <img src={server} style={{width:"60%", height: "auto"}} />
+              
+          </div>;
           }
-
           return <App data={data} />;
         }}
       </Query>

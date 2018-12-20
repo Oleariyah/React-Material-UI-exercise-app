@@ -3,22 +3,23 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/";
 import { red, amber } from "@material-ui/core/colors";
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-//import { persistCache } from 'apollo-cache-persist'
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { persistCache } from 'apollo-cache-persist';
 
+const cache = new InMemoryCache();
 
-const cache = new InMemoryCache()
-
-const store = {
+persistCache({
+  cache,
   storage: window.localStorage
-}
+})
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000'
 })
+
 
 const client = new ApolloClient({
   link: httpLink,
@@ -41,7 +42,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
  
-    <ApolloProvider client={client} store={store} >
+    <ApolloProvider client={client} >
       <MuiThemeProvider theme={theme}>
         <App />
       </MuiThemeProvider>
@@ -51,13 +52,3 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-
-window.addEventListener('load', () => {
-  if ('serviceWorker' in navigator) {
-            
-    navigator.serviceWorker.register("sw.js")
-    .then(console.log)
-    .catch(console.error);
-
-}
-});

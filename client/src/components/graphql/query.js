@@ -8,7 +8,7 @@ const ExercisesQuery = gql`
     description
     muscles
   }
-  }
+}
 `;
 
 export default ExercisesQuery;
