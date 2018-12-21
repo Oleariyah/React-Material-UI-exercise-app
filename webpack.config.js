@@ -1,13 +1,16 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 
-module.exports = {
+module.exports = 
+[ 
+    {
     entry: [ "./client/src/index.js"],
     devtool: 'cheap-module-source-map',
     output: {
         filename: 'index.js',
-        path:path.resolve(__dirname, "dist/public")
+        path:path.resolve(`${__dirname}`, "dist/public")
     },
     module: {
         rules: [
@@ -46,4 +49,15 @@ module.exports = {
             swDest: 'sw.js'
         })
     ]
-}
+ },
+ {   
+    target: 'node',
+    entry: [ "./server/index.js"],
+    devtool: 'cheap-module-source-map',
+    output: {
+        filename: 'index.js',
+        path:path.resolve(`${__dirname}`, "dist/server")
+    },
+        externals: [nodeExternals()]
+ }
+]
