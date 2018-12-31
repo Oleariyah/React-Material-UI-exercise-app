@@ -18,7 +18,7 @@ mongoose.connect(URI, OPTS, function(err) {
 
  //options
  const opts = {
-  endpoint: path.resolve(`${__dirname}`, "dist/public/indext.html")
+  endpoint: path.resolve(`${__dirname}`, "dist/public/index.html")
 } 
 //run the server
 const server = new GraphQLServer({ typeDefs, resolvers, opts })
