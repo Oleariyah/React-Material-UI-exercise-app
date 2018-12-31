@@ -2,7 +2,6 @@ const { GraphQLServer } = require('graphql-yoga');
 const mongoose = require('mongoose');
 const resolvers = require ('./resolver/resolvers');
 const typeDefs = require('./schema/types');
-const path = require('path')
 
 //connect to MongoDB with mongodb database with moongoose
 const URI = 'mongodb://oleariyah:police8791@ds213472.mlab.com:13472/exercise'; // nothing on 27016
@@ -15,13 +14,8 @@ mongoose.connect(URI, OPTS, function(err) {
     if (err) { return console.error(err);}
   }); 
   
-
- //options
- const opts = {
-  endpoint: path.resolve(`${__dirname}`, "dist/public/index.html")
-} 
 //run the server
-const server = new GraphQLServer({ typeDefs, resolvers, opts })
+const server = new GraphQLServer({ typeDefs, resolvers })
 mongoose.connection.once('open', () => 
 server.start(() => console.log('Server is running on localhost:4000')));
 
