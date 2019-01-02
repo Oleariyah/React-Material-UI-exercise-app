@@ -1,4 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga');
+const express = require('express')
+const path = require('path');
 const mongoose = require('mongoose');
 const resolvers = require ('./resolver/resolvers');
 const typeDefs = require('./schema/types');
@@ -16,6 +18,12 @@ mongoose.connect(URI, OPTS, function(err) {
   
 //run the server
 const server = new GraphQLServer({ typeDefs, resolvers })
+
+server.express.use(express.static('./dist/public/'));
+server.express.get('*', (req, res) => {
+  res.sendFile(path.resolve( "./dist/public", "index.html"))
+});
+
 mongoose.connection.once('open', () => 
 server.start(() => console.log('Server is running on localhost:4000')));
 

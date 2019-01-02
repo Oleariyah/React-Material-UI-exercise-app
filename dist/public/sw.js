@@ -1,4 +1,4 @@
-importScripts("precache-manifest.d4b73819ed1086412cfd86571c059ed7.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("precache-manifest.ff45c83815e8cd8372fe439f3cdea25b.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 workbox.routing.registerRoute(
     /http:\/\/localhost\:4000/,
