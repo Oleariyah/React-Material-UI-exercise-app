@@ -127,12 +127,12 @@ export default class AppContainer extends Component{
                </div>;
           }
           if (error) {
+            console.log(error);
             return <div style={{
               textAlign: "center",
               paddingTop: 70
             }}>
               <img src={server} style={{width:"60%", height: "auto"}} />
-              
           </div>;
           }
           return <App data={data} />;
