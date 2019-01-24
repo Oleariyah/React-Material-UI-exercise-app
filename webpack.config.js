@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const nodeExternals = require ('webpack-node-externals')
 
 module.exports = 
 [ 
@@ -43,5 +44,15 @@ module.exports =
             template: './client/public/index.html'
         })
     ]
+ },
+ {
+    target: 'node',
+    entry: [ "./server/index.js"],
+    devtool: 'cheap-module-source-map',
+    output: {
+        filename: 'index.js',
+        path:path.resolve(`${__dirname}`, "dist/server")
+    },
+     externals: [nodeExternals()]
  }
 ]

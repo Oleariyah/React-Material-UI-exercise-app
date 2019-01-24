@@ -2,9 +2,8 @@
   "name": "exercise",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/server/index.js",
   "scripts": {
-    "start": "node ./server/index.js",
+    "start": "node ./dist/server/index.js",
     "watch": "nodemon ./server/index.js",
     "dev": "rm -rf dist && webpack --mode development --progress",
     "build": "rm -rf dist && webpack --mode production --progress",
