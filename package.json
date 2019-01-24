@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist/server/index.js",
   "scripts": {
-    "start": "node ./dist/server/index.js",
+    "start": "node ./server/index.js",
     "watch": "nodemon ./server/index.js",
     "dev": "rm -rf dist && webpack --mode development --progress",
     "build": "rm -rf dist && webpack --mode production --progress",
